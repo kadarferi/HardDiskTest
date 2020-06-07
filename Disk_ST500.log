@@ -745,6 +745,42 @@ throughput metrics:
 IOs/sec:  6120.11
 MBs/sec:    47.81
 
+Nem értékelhetõ, csináljunk még 1et!
+
+
+# -----------------------------------------------------------------------------
+# Output #2
+
+sqlio v1.5.SG
+30 threads writing for 30 secs to file testfileW.dat
+        using 8KB IOs over 512KB stripes with 1024 IOs per run
+        buffering set to not use file nor disk caches (as is SQL Server)
+size of file testfileW.dat needs to be: 536838144 bytes
+current file size:      0 bytes
+need to expand by:      536838144 bytes
+expanding testfileW.dat ... done.
+initialization done
+CUMULATIVE DATA:
+throughput metrics:
+IOs/sec:   328.35
+MBs/sec:     2.56
+
+
+sqlio v1.5.SG
+30 threads reading for 30 secs from file testfileR.dat
+        using 8KB IOs over 512KB stripes with 1024 IOs per run
+        buffering set to not use file nor disk caches (as is SQL Server)
+size of file testfileR.dat needs to be: 536838144 bytes
+current file size:      0 bytes
+need to expand by:      536838144 bytes
+expanding testfileR.dat ... done.
+initialization done
+CUMULATIVE DATA:
+throughput metrics:
+IOs/sec:   340.86
+MBs/sec:     2.66
+
+
 
 # -----------------------------------------------------------------------------
 # 16 kB READ
