@@ -1,0 +1,778 @@
+
+# -----------------------------------------------------------------------------
+# USB32
+# -----------------------------------------------------------------------------
+
+# -----------------------------------------------------------------------------
+# 2 kB READ
+# -----------------------------------------------------------------------------
+
+# Command
+[s002R.bat]
+start cmd /k sqlio -kR -t30 -s30 -f64 -b2 -i1024 -BN testfileR.dat
+rem start cmd /k sqlio -kW -t30 -s30 -f64 -b2 -i1024 -BN testfileW.dat
+
+# -----------------------------------------------------------------------------
+# Output #1
+
+sqlio v1.5.SG
+30 threads reading for 30 secs from file testfileR.dat
+        using 2KB IOs over 128KB stripes with 1024 IOs per run
+        buffering set to not use file nor disk caches (as is SQL Server)
+size of file testfileR.dat needs to be: 134209536 bytes
+current file size:      0 bytes
+need to expand by:      134209536 bytes
+expanding testfileR.dat ... done.
+initialization done
+CUMULATIVE DATA:
+throughput metrics:
+IOs/sec:  2103.98
+MBs/sec:     4.10
+
+g:\>
+
+
+# -----------------------------------------------------------------------------
+# 2 kB WRITE
+# -----------------------------------------------------------------------------
+
+# Command
+[s002W.bat]
+rem start cmd /k sqlio -kR -t30 -s30 -f64 -b2 -i1024 -BN testfileR.dat
+start cmd /k sqlio -kW -t30 -s30 -f64 -b2 -i1024 -BN testfileW.dat
+
+# -----------------------------------------------------------------------------
+# Output #1
+
+sqlio v1.5.SG
+30 threads writing for 30 secs to file testfileW.dat
+        using 2KB IOs over 128KB stripes with 1024 IOs per run
+        buffering set to not use file nor disk caches (as is SQL Server)
+size of file testfileW.dat needs to be: 134209536 bytes
+current file size:      0 bytes
+need to expand by:      134209536 bytes
+expanding testfileW.dat ... done.
+initialization done
+CUMULATIVE DATA:
+throughput metrics:
+IOs/sec:   607.39
+MBs/sec:     1.18
+
+g:\>
+
+# -----------------------------------------------------------------------------
+# 2 kB WRITE & READ
+# -----------------------------------------------------------------------------
+# Command
+
+[s002WR.bat]
+start cmd /k sqlio -kR -t30 -s30 -f64 -b2 -i1024 -BN testfileR.dat
+start cmd /k sqlio -kW -t30 -s30 -f64 -b2 -i1024 -BN testfileW.dat
+
+# -----------------------------------------------------------------------------
+# Output #1
+
+sqlio v1.5.SG
+30 threads writing for 30 secs to file testfileW.dat
+        using 2KB IOs over 128KB stripes with 1024 IOs per run
+        buffering set to not use file nor disk caches (as is SQL Server)
+initialization done
+CUMULATIVE DATA:
+throughput metrics:
+IOs/sec:   311.86
+MBs/sec:     0.60
+
+g:\>
+
+sqlio v1.5.SG
+30 threads reading for 30 secs from file testfileR.dat
+        using 2KB IOs over 128KB stripes with 1024 IOs per run
+        buffering set to not use file nor disk caches (as is SQL Server)
+initialization done
+CUMULATIVE DATA:
+throughput metrics:
+IOs/sec:  1023.25
+MBs/sec:     1.99
+
+g:\>
+
+# -----------------------------------------------------------------------------
+# 4 kB READ
+# -----------------------------------------------------------------------------
+
+# Command
+[s004R.bat]
+start cmd /k sqlio -kR -t30 -s30 -f64 -b4 -i1024 -BN testfileR.dat
+rem start cmd /k sqlio -kW -t30 -s30 -f64 -b4 -i1024 -BN testfileW.dat
+
+# -----------------------------------------------------------------------------
+# Output #1
+
+sqlio v1.5.SG
+30 threads reading for 30 secs from file testfileR.dat
+        using 4KB IOs over 256KB stripes with 1024 IOs per run
+        buffering set to not use file nor disk caches (as is SQL Server)
+size of file testfileR.dat needs to be: 268419072 bytes
+current file size:      134209536 bytes
+need to expand by:      134209536 bytes
+expanding testfileR.dat ... done.
+initialization done
+CUMULATIVE DATA:
+throughput metrics:
+IOs/sec:  1921.21
+MBs/sec:     7.50
+
+g:\>
+
+
+# -----------------------------------------------------------------------------
+# 4 kB WRITE
+# -----------------------------------------------------------------------------
+
+# Command
+[s004W.bat]
+rem start cmd /k sqlio -kR -t30 -s30 -f64 -b4 -i1024 -BN testfileR.dat
+start cmd /k sqlio -kW -t30 -s30 -f64 -b4 -i1024 -BN testfileW.dat
+
+# -----------------------------------------------------------------------------
+# Output #1
+
+sqlio v1.5.SG
+30 threads writing for 30 secs to file testfileW.dat
+        using 4KB IOs over 256KB stripes with 1024 IOs per run
+        buffering set to not use file nor disk caches (as is SQL Server)
+size of file testfileW.dat needs to be: 268419072 bytes
+current file size:      134209536 bytes
+need to expand by:      134209536 bytes
+expanding testfileW.dat ... done.
+initialization done
+CUMULATIVE DATA:
+throughput metrics:
+IOs/sec:   544.06
+MBs/sec:     2.12
+
+g:\>
+
+# -----------------------------------------------------------------------------
+# 4 kB WRITE & READ
+# -----------------------------------------------------------------------------
+
+# Command
+[s004WR.bat]
+start cmd /k sqlio -kR -t30 -s30 -f64 -b4 -i1024 -BN testfileR.dat
+start cmd /k sqlio -kW -t30 -s30 -f64 -b4 -i1024 -BN testfileW.dat
+
+# -----------------------------------------------------------------------------
+# Output #1
+
+sqlio v1.5.SG
+30 threads writing for 30 secs to file testfileW.dat
+        using 4KB IOs over 256KB stripes with 1024 IOs per run
+        buffering set to not use file nor disk caches (as is SQL Server)
+initialization done
+CUMULATIVE DATA:
+throughput metrics:
+IOs/sec:   512.73
+MBs/sec:     2.00
+
+g:\>
+
+sqlio v1.5.SG
+30 threads reading for 30 secs from file testfileR.dat
+        using 4KB IOs over 256KB stripes with 1024 IOs per run
+        buffering set to not use file nor disk caches (as is SQL Server)
+initialization done
+CUMULATIVE DATA:
+throughput metrics:
+IOs/sec:   607.67
+MBs/sec:     2.37
+
+g:\>
+
+
+# -----------------------------------------------------------------------------
+# 8 kB READ
+# -----------------------------------------------------------------------------
+
+# Command
+[s008R.bat]
+start cmd /k sqlio -kR -t30 -s30 -f64 -b8 -i1024 -BN testfileR.dat
+rem start cmd /k sqlio -kW -t30 -s30 -f64 -b8 -i1024 -BN testfileW.dat
+
+# -----------------------------------------------------------------------------
+# Output #1
+
+sqlio v1.5.SG
+30 threads reading for 30 secs from file testfileR.dat
+        using 8KB IOs over 512KB stripes with 1024 IOs per run
+        buffering set to not use file nor disk caches (as is SQL Server)
+size of file testfileR.dat needs to be: 536838144 bytes
+current file size:      268419072 bytes
+need to expand by:      268419072 bytes
+expanding testfileR.dat ... done.
+initialization done
+CUMULATIVE DATA:
+throughput metrics:
+IOs/sec:  1576.73
+MBs/sec:    12.31
+
+g:\>
+
+
+# -----------------------------------------------------------------------------
+# 8 kB WRITE
+# -----------------------------------------------------------------------------
+
+# Command
+[s008W.bat]
+rem start cmd /k sqlio -kR -t30 -s30 -f64 -b8 -i1024 -BN testfileR.dat
+start cmd /k sqlio -kW -t30 -s30 -f64 -b8 -i1024 -BN testfileW.dat
+
+# -----------------------------------------------------------------------------
+# Output #1
+
+sqlio v1.5.SG
+30 threads writing for 30 secs to file testfileW.dat
+        using 8KB IOs over 512KB stripes with 1024 IOs per run
+        buffering set to not use file nor disk caches (as is SQL Server)
+size of file testfileW.dat needs to be: 536838144 bytes
+current file size:      268419072 bytes
+need to expand by:      268419072 bytes
+expanding testfileW.dat ... done.
+initialization done
+CUMULATIVE DATA:
+throughput metrics:
+IOs/sec:   187.08
+MBs/sec:     1.46
+
+g:\>
+
+
+# -----------------------------------------------------------------------------
+# 8 kB WRITE & READ
+# -----------------------------------------------------------------------------
+
+# Command
+[s008WR.bat]
+start cmd /k sqlio -kR -t30 -s30 -f64 -b8 -i1024 -BN testfileR.dat
+start cmd /k sqlio -kW -t30 -s30 -f64 -b8 -i1024 -BN testfileW.dat
+
+# -----------------------------------------------------------------------------
+# Output #1
+
+sqlio v1.5.SG
+30 threads writing for 30 secs to file testfileW.dat
+        using 8KB IOs over 512KB stripes with 1024 IOs per run
+        buffering set to not use file nor disk caches (as is SQL Server)
+initialization done
+CUMULATIVE DATA:
+throughput metrics:
+IOs/sec:   230.62
+MBs/sec:     1.80
+
+g:\>
+
+sqlio v1.5.SG
+30 threads reading for 30 secs from file testfileR.dat
+        using 8KB IOs over 512KB stripes with 1024 IOs per run
+        buffering set to not use file nor disk caches (as is SQL Server)
+initialization done
+CUMULATIVE DATA:
+throughput metrics:
+IOs/sec:   254.91
+MBs/sec:     1.99
+
+g:\>
+
+
+# -----------------------------------------------------------------------------
+# 16 kB READ
+# -----------------------------------------------------------------------------
+
+# Command
+[s016R.bat]
+start cmd /k sqlio -kR -t30 -s30 -f64 -b16 -i1024 -BN testfileR.dat
+rem start cmd /k sqlio -kW -t30 -s30 -f64 -b16 -i1024 -BN testfileW.dat
+
+# -----------------------------------------------------------------------------
+# Output #1
+
+sqlio v1.5.SG
+30 threads reading for 30 secs from file testfileR.dat
+        using 16KB IOs over 1024KB stripes with 1024 IOs per run
+        buffering set to not use file nor disk caches (as is SQL Server)
+size of file testfileR.dat needs to be: 1073676288 bytes
+current file size:      536838144 bytes
+need to expand by:      536838144 bytes
+expanding testfileR.dat ... done.
+initialization done
+CUMULATIVE DATA:
+throughput metrics:
+IOs/sec:  1313.44
+MBs/sec:    20.52
+
+g:\>
+
+
+# -----------------------------------------------------------------------------
+# 16 kB WRITE
+# -----------------------------------------------------------------------------
+
+# Command
+[s016W.bat]
+rem start cmd /k sqlio -kR -t30 -s30 -f64 -b16 -i1024 -BN testfileR.dat
+start cmd /k sqlio -kW -t30 -s30 -f64 -b16 -i1024 -BN testfileW.dat
+
+# -----------------------------------------------------------------------------
+# Output #1
+
+sqlio v1.5.SG
+30 threads writing for 30 secs to file testfileW.dat
+        using 16KB IOs over 1024KB stripes with 1024 IOs per run
+        buffering set to not use file nor disk caches (as is SQL Server)
+size of file testfileW.dat needs to be: 1073676288 bytes
+current file size:      536838144 bytes
+need to expand by:      536838144 bytes
+expanding testfileW.dat ... done.
+initialization done
+CUMULATIVE DATA:
+throughput metrics:
+IOs/sec:   187.82
+MBs/sec:     2.93
+
+g:\>
+
+
+# -----------------------------------------------------------------------------
+# 16 kB WRITE & READ
+# -----------------------------------------------------------------------------
+
+# Command
+[s016WR.bat]
+start cmd /k sqlio -kR -t30 -s30 -f64 -b16 -i1024 -BN testfileR.dat
+start cmd /k sqlio -kW -t30 -s30 -f64 -b16 -i1024 -BN testfileW.dat
+
+# -----------------------------------------------------------------------------
+# Output #1
+
+sqlio v1.5.SG
+30 threads writing for 30 secs to file testfileW.dat
+        using 16KB IOs over 1024KB stripes with 1024 IOs per run
+        buffering set to not use file nor disk caches (as is SQL Server)
+initialization done
+CUMULATIVE DATA:
+throughput metrics:
+IOs/sec:   178.86
+MBs/sec:     2.79
+
+g:\>
+
+sqlio v1.5.SG
+30 threads reading for 30 secs from file testfileR.dat
+        using 16KB IOs over 1024KB stripes with 1024 IOs per run
+        buffering set to not use file nor disk caches (as is SQL Server)
+initialization done
+CUMULATIVE DATA:
+throughput metrics:
+IOs/sec:   252.02
+MBs/sec:     3.93
+
+g:\>
+
+
+# -----------------------------------------------------------------------------
+# 32 kB READ
+# -----------------------------------------------------------------------------
+
+# Command
+[s032R.bat]
+start cmd /k sqlio -kR -t30 -s30 -f64 -b32 -i1024 -BN testfileR.dat
+rem start cmd /k sqlio -kW -t30 -s30 -f64 -b32 -i1024 -BN testfileW.dat
+
+# -----------------------------------------------------------------------------
+# Output #1
+
+sqlio v1.5.SG
+30 threads reading for 30 secs from file testfileR.dat
+        using 32KB IOs over 2048KB stripes with 1024 IOs per run
+        buffering set to not use file nor disk caches (as is SQL Server)
+size of file testfileR.dat needs to be: 2147352576 bytes
+current file size:      1073676288 bytes
+need to expand by:      1073676288 bytes
+expanding testfileR.dat ... done.
+initialization done
+CUMULATIVE DATA:
+throughput metrics:
+IOs/sec:   832.48
+MBs/sec:    26.01
+
+g:\>
+
+
+# -----------------------------------------------------------------------------
+# 32 kB WRITE
+# -----------------------------------------------------------------------------
+
+# Command
+[s032W.bat]
+rem start cmd /k sqlio -kR -t30 -s30 -f64 -b32 -i1024 -BN testfileR.dat
+start cmd /k sqlio -kW -t30 -s30 -f64 -b32 -i1024 -BN testfileW.dat
+
+# -----------------------------------------------------------------------------
+# Output #1
+
+sqlio v1.5.SG
+30 threads writing for 30 secs to file testfileW.dat
+        using 32KB IOs over 2048KB stripes with 1024 IOs per run
+        buffering set to not use file nor disk caches (as is SQL Server)
+size of file testfileW.dat needs to be: 2147352576 bytes
+current file size:      1073676288 bytes
+need to expand by:      1073676288 bytes
+expanding testfileW.dat ... done.
+initialization done
+CUMULATIVE DATA:
+throughput metrics:
+IOs/sec:    73.52
+MBs/sec:     2.29
+
+g:\>
+
+
+# -----------------------------------------------------------------------------
+# 32 kB WRITE & READ
+# -----------------------------------------------------------------------------
+
+# Command
+[s032WR.bat]
+start cmd /k sqlio -kR -t30 -s30 -f64 -b32 -i1024 -BN testfileR.dat
+start cmd /k sqlio -kW -t30 -s30 -f64 -b32 -i1024 -BN testfileW.dat
+
+# -----------------------------------------------------------------------------
+# Output #1
+
+sqlio v1.5.SG
+30 threads writing for 30 secs to file testfileW.dat
+        using 32KB IOs over 2048KB stripes with 1024 IOs per run
+        buffering set to not use file nor disk caches (as is SQL Server)
+initialization done
+CUMULATIVE DATA:
+throughput metrics:
+IOs/sec:   123.08
+MBs/sec:     3.84
+
+g:\>
+
+sqlio v1.5.SG
+30 threads reading for 30 secs from file testfileR.dat
+        using 32KB IOs over 2048KB stripes with 1024 IOs per run
+        buffering set to not use file nor disk caches (as is SQL Server)
+initialization done
+CUMULATIVE DATA:
+throughput metrics:
+IOs/sec:   127.80
+MBs/sec:     3.99
+
+g:\>
+
+
+
+# -----------------------------------------------------------------------------
+# 64 kB READ
+# -----------------------------------------------------------------------------
+
+# Command
+[s064R.bat]
+start cmd /k sqlio -kR -t30 -s30 -f64 -b64 -i1024 -BN testfileR.dat
+rem start cmd /k sqlio -kW -t30 -s30 -f64 -b64 -i1024 -BN testfileW.dat
+
+# -----------------------------------------------------------------------------
+# Output #1
+
+sqlio v1.5.SG
+30 threads reading for 30 secs from file testfileR.dat
+        using 64KB IOs over 4096KB stripes with 1024 IOs per run
+        buffering set to not use file nor disk caches (as is SQL Server)
+size of file testfileR.dat needs to be: 4294705152 bytes
+current file size:      2147352576 bytes
+need to expand by:      2147352576 bytes
+expanding testfileR.dat ... done.
+initialization done
+CUMULATIVE DATA:
+throughput metrics:
+IOs/sec:   531.65
+MBs/sec:    33.22
+
+g:\>
+
+
+# -----------------------------------------------------------------------------
+# 64 kB WRITE
+# -----------------------------------------------------------------------------
+
+# Command
+[s064W.bat]
+rem start cmd /k sqlio -kR -t30 -s30 -f64 -b64 -i1024 -BN testfileR.dat
+start cmd /k sqlio -kW -t30 -s30 -f64 -b64 -i1024 -BN testfileW.dat
+
+# -----------------------------------------------------------------------------
+# Output #1
+
+sqlio v1.5.SG
+30 threads writing for 30 secs to file testfileW.dat
+        using 64KB IOs over 4096KB stripes with 1024 IOs per run
+        buffering set to not use file nor disk caches (as is SQL Server)
+size of file testfileW.dat needs to be: 4294705152 bytes
+current file size:      2147352576 bytes
+need to expand by:      2147352576 bytes
+expanding testfileW.dat ... done.
+initialization done
+CUMULATIVE DATA:
+throughput metrics:
+IOs/sec:    54.80
+MBs/sec:     3.42
+
+g:\>
+
+
+# -----------------------------------------------------------------------------
+# 64 kB WRITE & READ
+# -----------------------------------------------------------------------------
+
+# Command
+[s064W.bat]
+start cmd /k sqlio -kR -t30 -s30 -f64 -b64 -i1024 -BN testfileR.dat
+start cmd /k sqlio -kW -t30 -s30 -f64 -b64 -i1024 -BN testfileW.dat
+
+# -----------------------------------------------------------------------------
+# Output #1
+
+sqlio v1.5.SG
+30 threads writing for 30 secs to file testfileW.dat
+        using 64KB IOs over 4096KB stripes with 1024 IOs per run
+        buffering set to not use file nor disk caches (as is SQL Server)
+initialization done
+CUMULATIVE DATA:
+throughput metrics:
+IOs/sec:    62.52
+MBs/sec:     3.90
+
+g:\>
+
+
+sqlio v1.5.SG
+30 threads reading for 30 secs from file testfileR.dat
+        using 64KB IOs over 4096KB stripes with 1024 IOs per run
+        buffering set to not use file nor disk caches (as is SQL Server)
+initialization done
+CUMULATIVE DATA:
+throughput metrics:
+IOs/sec:     1.08
+MBs/sec:     0.06
+
+g:\>
+
+
+# -----------------------------------------------------------------------------
+# 128 kB READ
+# -----------------------------------------------------------------------------
+
+# Command
+[s128R.bat]
+start cmd /k sqlio -kR -t30 -s30 -f64 -b128 -i1024 -BN testfileR.dat
+rem start cmd /k sqlio -kW -t30 -s30 -f64 -b128 -i1024 -BN testfileW.dat
+
+# -----------------------------------------------------------------------------
+# Output #1
+
+sqlio v1.5.SG
+30 threads reading for 30 secs from file testfileR.dat
+        using 128KB IOs over 8192KB stripes with 1024 IOs per run
+        buffering set to not use file nor disk caches (as is SQL Server)
+size of file testfileR.dat needs to be: 8589410304 bytes
+current file size:      4294705152 bytes
+need to expand by:      4294705152 bytes
+expanding testfileR.dat ...do_ovlp_io: ReadFile (from GetOverlappedResult): Nincs elÚg hely a lemezen.
+file offset high: 0x00000001 low: 0xfff60000
+NOT exiting
+ done.
+initialization done
+
+
+Törlöm a testfile-okat
+
+# -----------------------------------------------------------------------------
+# Output #2
+
+sqlio v1.5.SG
+30 threads reading for 30 secs from file testfileR.dat
+        using 128KB IOs over 8192KB stripes with 1024 IOs per run
+        buffering set to not use file nor disk caches (as is SQL Server)
+size of file testfileR.dat needs to be: 8589410304 bytes
+current file size:      0 bytes
+need to expand by:      8589410304 bytes
+expanding testfileR.dat ...do_ovlp_io: ReadFile (from GetOverlappedResult): Nincs elÚg hely a lemezen.
+file offset high: 0x00000001 low: 0xfff60000
+NOT exiting
+ done.
+initialization done
+do_ovlp_io: ReadFile: ElÚrte a fßjl vÚgÚt.
+file offset high: 0x00000000 low: 0x000c0000
+exiting
+
+g:\>
+
+Ez sem segített
+lefuttatom újra a s064R.bat-ot
+
+# -----------------------------------------------------------------------------
+# Output #3
+
+sqlio v1.5.SG
+30 threads reading for 30 secs from file testfileR.dat
+        using 128KB IOs over 8192KB stripes with 1024 IOs per run
+        buffering set to not use file nor disk caches (as is SQL Server)
+size of file testfileR.dat needs to be: 8589410304 bytes
+current file size:      4294705152 bytes
+need to expand by:      4294705152 bytes
+expanding testfileR.dat ...do_ovlp_io: ReadFile (from GetOverlappedResult): Nincs elÚg hely a lemezen.
+file offset high: 0x00000001 low: 0xfff60000
+NOT exiting
+ done.
+initialization done
+CUMULATIVE DATA:
+throughput metrics:
+IOs/sec:   266.37
+MBs/sec:    33.29
+
+g:\>
+
+
+# -----------------------------------------------------------------------------
+# 128 kB WRITE
+# -----------------------------------------------------------------------------
+
+# Command
+[s128W.bat]
+rem start cmd /k sqlio -kR -t30 -s30 -f64 -b128 -i1024 -BN testfileR.dat
+start cmd /k sqlio -kW -t30 -s30 -f64 -b128 -i1024 -BN testfileW.dat
+
+# -----------------------------------------------------------------------------
+# Output #1
+
+sqlio v1.5.SG
+30 threads writing for 30 secs to file testfileW.dat
+        using 128KB IOs over 8192KB stripes with 1024 IOs per run
+        buffering set to not use file nor disk caches (as is SQL Server)
+size of file testfileW.dat needs to be: 8589410304 bytes
+current file size:      0 bytes
+need to expand by:      8589410304 bytes
+expanding testfileW.dat ...do_ovlp_io: WriteFile (from GetOverlappedResult): Nincs elÚg hely a lemezen.
+file offset high: 0x00000001 low: 0xfff60000
+NOT exiting
+ done.
+initialization done
+CUMULATIVE DATA:
+throughput metrics:
+IOs/sec:     5.50
+MBs/sec:     0.68
+
+g:\>
+
+# -----------------------------------------------------------------------------
+# 128 kB WRITE & READ
+# -----------------------------------------------------------------------------
+
+# Command
+[s128WR.bat]
+start cmd /k sqlio -kR -t30 -s30 -f64 -b128 -i1024 -BN testfileR.dat
+start cmd /k sqlio -kW -t30 -s30 -f64 -b128 -i1024 -BN testfileW.dat
+
+# -----------------------------------------------------------------------------
+# Output #1
+
+sqlio v1.5.SG
+30 threads writing for 30 secs to file testfileW.dat
+        using 128KB IOs over 8192KB stripes with 1024 IOs per run
+        buffering set to not use file nor disk caches (as is SQL Server)
+size of file testfileW.dat needs to be: 8589410304 bytes
+current file size:      245497856 bytes
+need to expand by:      8343912448 bytes
+expanding testfileW.dat ...do_ovlp_io: WriteFile (from GetOverlappedResult): Nincs elÚg hely a lemezen.
+file offset high: 0x00000001 low: 0xfff60000
+NOT exiting
+ done.
+initialization done
+CUMULATIVE DATA:
+throughput metrics:
+IOs/sec:     0.98
+MBs/sec:     0.12
+
+g:\>
+
+sqlio v1.5.SG
+30 threads reading for 30 secs from file testfileR.dat
+        using 128KB IOs over 8192KB stripes with 1024 IOs per run
+        buffering set to not use file nor disk caches (as is SQL Server)
+size of file testfileR.dat needs to be: 8589410304 bytes
+current file size:      4294705152 bytes
+need to expand by:      4294705152 bytes
+expanding testfileR.dat ...do_ovlp_io: ReadFile (from GetOverlappedResult): Nincs elÚg hely a lemezen.
+file offset high: 0x00000001 low: 0xfff60000
+NOT exiting
+ done.
+initialization done
+CUMULATIVE DATA:
+throughput metrics:
+IOs/sec:   260.40
+MBs/sec:    32.55
+
+g:\>
+
+
+A W testfile valahogy túl kicsinek tûnt. Újrafuttatom a tesztet.
+
+
+# -----------------------------------------------------------------------------
+# Output #2
+
+sqlio v1.5.SG
+30 threads writing for 30 secs to file testfileW.dat
+        using 128KB IOs over 8192KB stripes with 1024 IOs per run
+        buffering set to not use file nor disk caches (as is SQL Server)
+size of file testfileW.dat needs to be: 8589410304 bytes
+current file size:      245497856 bytes
+need to expand by:      8343912448 bytes
+expanding testfileW.dat ...do_ovlp_io: WriteFile (from GetOverlappedResult): Nincs elÚg hely a lemezen.
+file offset high: 0x00000001 low: 0xfff60000
+NOT exiting
+ done.
+initialization done
+CUMULATIVE DATA:
+throughput metrics:
+IOs/sec:     0.98
+MBs/sec:     0.12
+
+g:\>
+
+sqlio v1.5.SG
+30 threads reading for 30 secs from file testfileR.dat
+        using 128KB IOs over 8192KB stripes with 1024 IOs per run
+        buffering set to not use file nor disk caches (as is SQL Server)
+size of file testfileR.dat needs to be: 8589410304 bytes
+current file size:      4294705152 bytes
+need to expand by:      4294705152 bytes
+expanding testfileR.dat ...do_ovlp_io: ReadFile (from GetOverlappedResult): Nincs elÚg hely a lemezen.
+file offset high: 0x00000001 low: 0xfff60000
+NOT exiting
+ done.
+initialization done
+CUMULATIVE DATA:
+throughput metrics:
+IOs/sec:   266.57
+MBs/sec:    33.32
+
+g:\>
+
+
+Azt írja, hogy noncs elég hely a lemezen. Közben meg van. Na mindegy.
+
